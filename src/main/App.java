@@ -1,7 +1,6 @@
 package main;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.Color;
 
 import ui.SelectWindow;
 import ui.stat.StatWindow;
@@ -11,7 +10,7 @@ public class App {
 	public static final long serialVersion = 1l;
 	private static App app;
 
-	private String url = "https://stats.universocraft.com/stats.php?player=";
+	public static final Color background = new Color(225, 225, 225);
 
 	private Connection connection;
 
@@ -34,19 +33,12 @@ public class App {
 
 	public void getStats(String player, String game) {
 
-		connect(url + player);
+		connect(player);
 
-		StatWindow statWindow = new StatWindow(connection.getGameData(game));
+		StatWindow statWindow = new StatWindow(player, game, connection.getGameData(game));
 		statWindow.setDefaultCloseOperation(StatWindow.DISPOSE_ON_CLOSE);
-		statWindow.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent e) {
-				window.setVisible(true);
-			}
-		});
+		statWindow.setAlwaysOnTop(true);
 		statWindow.setVisible(true);
-
-		window.setVisible(false);
 
 	}
 

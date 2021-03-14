@@ -9,17 +9,14 @@ import main.App;
 public class StatWindow extends JDialog {
 	public static final long serialVersionUID = App.serialVersion;
 
-	public StatWindow(LinkedList<String[]> data) {
+	public StatWindow(String player, String game, LinkedList<String[]> data) {
 
-		setTitle("Stats");
+		setTitle("Stats - " + player);
 		setSize(400, 500);
+		setResizable(false);
 		setLocationRelativeTo(App.app().getSelectWindow());
 
-//		JPanel panel = new JPanel();
-//		add(panel);
-
-		StatsComponent stats = new StatsComponent(data);
-//		panel.add(stats);
+		StatsComponent stats = new StatsComponent(game, data);
 		add(stats);
 
 	}

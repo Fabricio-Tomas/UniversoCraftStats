@@ -6,24 +6,40 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 
 import main.App;
-import ui.layout.SelectLayout;
+import ui.layout.StatLayout;
 
 public class StatsComponent extends JComponent {
 	public static final long serialVersionUID = App.serialVersion;
 
-	public StatsComponent(LinkedList<String[]> data) {
+	public StatsComponent(String game, LinkedList<String[]> data) {
 
-		setLayout(new SelectLayout());
+		setLayout(new StatLayout());
+
+		JLabel gameLabel = new JLabel(game, JLabel.CENTER);
+		add(gameLabel);
 
 		while (!data.isEmpty()) {
 
 			String[] stats = data.poll();
 
-			JLabel title = new JLabel(stats[0], JLabel.LEFT);
-			JLabel count = new JLabel(stats[1], JLabel.RIGHT);
+			if (stats.length == 1) {
 
-			add(title);
-			add(count);
+				System.out.println("sahdoadhaso");
+				JLabel error = new JLabel(stats[0], JLabel.CENTER);
+				add(error);
+
+				break;
+
+			}
+
+			StatLabel stat = new StatLabel(stats[0], stats[1]);
+			add(stat);
+
+//			JLabel title = new JLabel("  " + stats[0], JLabel.LEFT);
+//			JLabel count = new JLabel(stats[1] + "  ", JLabel.RIGHT);
+
+//			add(title);
+//			add(count);
 
 		}
 

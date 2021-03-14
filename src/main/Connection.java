@@ -13,11 +13,13 @@ import org.jsoup.select.Elements;
 public class Connection {
 
 	private String url;
+	private String player;
 
-	public Connection(String url) {
+	public Connection(String player) {
 
+		url = "https://stats.universocraft.com/stats.php?player=" + player;
 		if (getConnectionStatusCode(url) == 200)
-			this.url = url;
+			this.player = player;
 
 	}
 
@@ -36,25 +38,27 @@ public class Connection {
 
 			String header = element.getElementsByClass("game-header").text();
 
-			if (header.equalsIgnoreCase(game)) {
+			if (!header.equalsIgnoreCase(game))
+				continue;
 
-				Elements stats = element.getElementsByClass("game-content").get(0).getElementsByClass("game-stat");
+			Elements stats = element.getElementsByClass("game-content").get(0).getElementsByClass("game-stat");
 
-				for (Element stat : stats) {
+			for (Element stat : stats) {
 
-					String[] miniData = new String[2];
-					miniData[0] = stat.getElementsByClass("game-stat-title").text();
-					miniData[1] = stat.getElementsByClass("game-stat-count").text();
+				String[] miniData = new String[2];
+				miniData[0] = stat.getElementsByClass("game-stat-title").text();
+				miniData[1] = stat.getElementsByClass("game-stat-count").text();
 
-					data.add(miniData);
-
-				}
+				data.add(miniData);
 
 			}
 
+			return data;// Toda la información ha sido recopilada exitosamente
+
 		}
 
-		return data;
+		data.add(new String[] { player + " NO ESTÁ REGISTRADO O NO TIENE ESTADISTICAS EN '" + game + "'" });
+		return data;// No se encontró el modo de juego
 
 	}
 

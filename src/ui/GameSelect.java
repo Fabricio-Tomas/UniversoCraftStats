@@ -1,12 +1,13 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JComponent;
 import javax.swing.JRadioButton;
-import javax.swing.border.TitledBorder;
 
 import main.App;
 import ui.layout.SelectLayout;
@@ -21,13 +22,16 @@ public class GameSelect extends JComponent {
 
 	public GameSelect() {
 
-		setBorder(new TitledBorder("Selección del juego"));
+		setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(20, 30, 50, 150), 2, true),
+				"Selección de juego"));
 
 		setLayout(new SelectLayout());
 
 		btnGroup = new ButtonGroup();
 
 		games[0] = new JRadioButton("Bedwars");
+		games[0].setSelected(true);
+		gameSelected = games[0].getActionCommand();
 		games[1] = new JRadioButton("UHC");
 		games[2] = new JRadioButton("Party games");
 		games[3] = new JRadioButton("ausdgasiudgas");
@@ -54,6 +58,7 @@ public class GameSelect extends JComponent {
 				}
 			});
 			btnGroup.add(games[i]);
+			games[i].setBackground(App.background);
 			add(games[i]);
 
 		}
@@ -62,7 +67,7 @@ public class GameSelect extends JComponent {
 
 	public String getSelection() {
 
-		return gameSelected;
+		return gameSelected.toUpperCase();
 
 	}
 

@@ -1,13 +1,11 @@
 package ui;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import main.App;
 import ui.layout.SelectWindowLayout;
@@ -17,18 +15,18 @@ public class SelectWindow extends JFrame {
 
 	public SelectWindow() {
 
-		setTitle("Estadisticas UniversoCrafters");
+		setTitle("Estadisticas UniversoCraft");
 		setSize(450, 580);
 		setResizable(false);
 		setLocationRelativeTo(null);
 
 		JPanel panel = new JPanel(new SelectWindowLayout());
-		panel.setBackground(new Color(220, 220, 220));
+		panel.setBackground(App.background);
 		add(panel);
 
 		// Creación y añadido de elementos a la ventana
-		JTextField playerName = new JTextField();
-		JButton submit = new JButton("Seleccionar");
+		TextField playerName = new TextField("Name tag");
+		JButton submit = new JButton("Buscar");
 		GameSelect gameSelect = new GameSelect();
 
 		submit.addActionListener(new ActionListener() {
@@ -36,7 +34,6 @@ public class SelectWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				if (playerName.getText().isEmpty()) {
-					System.out.println("Escriba el nombre del usuario");
 					return;
 				}
 
