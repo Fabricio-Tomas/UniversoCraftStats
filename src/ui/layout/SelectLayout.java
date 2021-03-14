@@ -18,7 +18,8 @@ public class SelectLayout extends LayoutAdapter {
 		int gap = (int) (W * 0.05);
 
 		int w = (W - gap * 2) / 2;
-		int h = (H - gap * 2) / ((n + 1) / 2);
+		int N = (n % 2 == 1 ? n + 1 : n);
+		int h = (H - gap * 2) / (N / 2);
 
 		int x = gap;
 		int y = gap;
