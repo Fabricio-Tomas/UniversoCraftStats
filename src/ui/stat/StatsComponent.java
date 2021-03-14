@@ -24,7 +24,6 @@ public class StatsComponent extends JComponent {
 
 			if (stats.length == 1) {
 
-				System.out.println("sahdoadhaso");
 				JLabel error = new JLabel(stats[0], JLabel.CENTER);
 				add(error);
 
@@ -34,12 +33,6 @@ public class StatsComponent extends JComponent {
 
 			StatLabel stat = new StatLabel(stats[0], stats[1]);
 			add(stat);
-
-//			JLabel title = new JLabel("  " + stats[0], JLabel.LEFT);
-//			JLabel count = new JLabel(stats[1] + "  ", JLabel.RIGHT);
-
-//			add(title);
-//			add(count);
 
 		}
 

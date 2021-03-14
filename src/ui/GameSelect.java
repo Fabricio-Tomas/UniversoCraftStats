@@ -15,7 +15,7 @@ import ui.layout.SelectLayout;
 public class GameSelect extends JComponent {
 	public static final long serialVersionUID = App.serialVersion;
 
-	private JRadioButton[] games = new JRadioButton[16];
+	private JRadioButton[] games = new JRadioButton[17];
 	private String gameSelected;
 
 	private ButtonGroup btnGroup;
@@ -29,24 +29,25 @@ public class GameSelect extends JComponent {
 
 		btnGroup = new ButtonGroup();
 
-		games[0] = new JRadioButton("Bedwars");
+		games[0] = new JRadioButton("TheBridge");
 		games[0].setSelected(true);
 		gameSelected = games[0].getActionCommand();
-		games[1] = new JRadioButton("UHC");
-		games[2] = new JRadioButton("Party games");
-		games[3] = new JRadioButton("ausdgasiudgas");
-		games[4] = new JRadioButton("ausdgasiudgas");
-		games[5] = new JRadioButton("ausdgasiudgas");
-		games[6] = new JRadioButton("ausdgasiudgas");
-		games[7] = new JRadioButton("ausdgasiudgas");
-		games[8] = new JRadioButton("ausdgasiudgas");
-		games[9] = new JRadioButton("ausdgasiudgas");
-		games[10] = new JRadioButton("ausdgasiudgas");
-		games[11] = new JRadioButton("ausdgasiudgas");
-		games[12] = new JRadioButton("ausdgasiudgas");
-		games[13] = new JRadioButton("ausdgasiudgas");
-		games[14] = new JRadioButton("ausdgasiudgas");
-		games[15] = new JRadioButton("ausdgasiudgas");
+		games[1] = new JRadioButton("Destruye el Nexus");
+		games[2] = new JRadioButton("SkyWars");
+		games[3] = new JRadioButton("LuckyWars");
+		games[4] = new JRadioButton("EggWars");
+		games[5] = new JRadioButton("BedWars");
+		games[6] = new JRadioButton("TeamSkywars");
+		games[7] = new JRadioButton("SpeedBuilders");
+		games[8] = new JRadioButton("BuildBattle");
+		games[9] = new JRadioButton("Escapa de la bestia");
+		games[10] = new JRadioButton("Party games");
+		games[11] = new JRadioButton("Juegos del hambre");
+		games[12] = new JRadioButton("Skypit");
+		games[13] = new JRadioButton("ArenaPvP");
+		games[14] = new JRadioButton("UHC");
+		games[15] = new JRadioButton("MurderMystery");
+		games[16] = new JRadioButton("Captura la lana");
 
 		for (int i = 0; i < games.length; i++) {
 
